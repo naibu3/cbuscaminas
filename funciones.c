@@ -308,23 +308,29 @@ void Derrota(){
 	scanf("");
 }
 
+//Pantalla devolver a jugar, devuelve 0 para salir y 1 para volver a jugar
 int VolverAJugar(){
 
 	LimpiarPantalla();
-	
-	char resp='a';
 
-	while(!((resp=='s') || (resp=='n'))){
+	char buf[128];
+    char option;
 
-		printf("\n\nVolver al titulo?(s/n): ");
-		getchar();
-		scanf("%c", &resp);
-		printf("%s","Hola");
-	}
-	if(resp=='s'){
-		return 1;
-	}
-	else{
-		return 0;
-	}
+    printf("Volver a jugar? (s/n): ");
+    while (fgets(buf, sizeof buf, stdin)) {
+        printf("\n");
+        option = buf[0];
+        if (option == 's' || option == 'n') {
+            if (buf[1] == '\n') break;
+        }
+        LimpiarPantalla();
+        printf("\n%sIntroduce un solo caracter (s/n) y pulsa intro: %s", ROJO_T, RES_COL);
+    }   
+    if(option == 's')
+    {
+    	return 1;
+    }
+    else{
+    	return 0;
+    }
 }

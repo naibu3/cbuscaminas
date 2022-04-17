@@ -317,6 +317,7 @@ int VolverAJugar(){
     char option;
 
     printf("Volver a jugar? (s/n): ");
+
     while (fgets(buf, sizeof buf, stdin)) {
         printf("\n");
         option = buf[0];
@@ -333,4 +334,45 @@ int VolverAJugar(){
     else{
     	return 0;
     }
+}
+
+//INTERFAZ PARA SELECCIONAR LOS MODOS DEL JUEGO
+void menu(){
+	LimpiarPantalla();
+
+	char buf[128];
+    char option;
+
+	do{
+		//MUESTRA EL MENU
+		printf("OPCION\n");
+
+		while (fgets(buf, sizeof buf, stdin)) {
+        	printf("\n");
+        	option = buf[0];
+        	if (option == 'j' || option == 'a' || option == 'q' || option == 'p') {
+            	if (buf[1] == '\n') break;
+        	}
+        	LimpiarPantalla();
+        	printf("\n%sIntroduce un solo caracter (s/n) y pulsa intro: %s", ROJO_T, RES_COL);
+    	}
+
+    	switch(option){
+
+    		case 'j':{
+    			break;
+    		}
+    		case 'a':{
+    			//MENU DE AJUSTES
+    		}
+    		case 'q':{
+    			//SALIR
+    			exit(0);
+    		}
+    		case 'p':{
+   		 		LimpiarPantalla();
+    			//MENU DE PUNTUACIONES
+    		}
+    	}	
+	}while(1);
 }

@@ -26,13 +26,14 @@ int main()
 	tablMinas=ReservarMemMinas(FILAS, COLUMNAS);
 
 	do{
+		MostrarTitulo();
+		LimpiarPantalla();
+
+		Menu();
 
 		RellenarTablero(tablero, FILAS, COLUMNAS, CASILLA);
 		ColocarMinas(tablMinas, FILAS, COLUMNAS, N_MINAS);
 		ColocarPistas(tablMinas, FILAS, COLUMNAS);
-
-		MostrarTitulo();
-		LimpiarPantalla();
 
 		//BUCLE PRINCIPAL
 		while(1){

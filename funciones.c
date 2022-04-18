@@ -113,7 +113,7 @@ void ColocarMinas(int** matriz, int fil, int col, int n_minas){
 		fila=rand()%fil;
 		columna=rand()%col;
 
-		printf("<%i , %i>\n", fila, columna);
+		//printf("<%i , %i>\n", fila, columna); //debug
 
 		matriz[fila][columna]=9;
 	}

@@ -22,6 +22,7 @@ void RevelarAlrededor(char** tablero, int** minas, int fil, int col, int f, int 
 int ComprobarCasillasRest(char** tablero, int fil, int col, char caract);
 int VolverAJugar();
 void Menu();
+int PulsaIntro();
 
 //FUNCIONES GRAFICAS
 void MostrarTitulo();

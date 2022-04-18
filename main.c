@@ -29,7 +29,7 @@ int main()
 		MostrarTitulo();
 		LimpiarPantalla();
 
-		Menu();
+		//Menu();
 
 		RellenarTablero(tablero, FILAS, COLUMNAS, CASILLA);
 		ColocarMinas(tablMinas, FILAS, COLUMNAS, N_MINAS);

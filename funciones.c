@@ -256,9 +256,10 @@ void MostrarTitulo(){
 	sleep(1);
 	printf("\n*************************************By N4ibu3**********************************\n");
 	sleep(1);
-	printf("\n                                     Pulsa intro\n");
-	getchar();
-	scanf("");
+	fflush(stdin);
+	printf("\n                                   Pulsa intro\n");
+	while(PulsaIntro());
+
 }
 
 void LimpiarPantalla(){
@@ -284,28 +285,40 @@ int ComprobarCasillasRest(char** tablero, int fil, int col, char caract){
 
 void Victoria(){
 	printf("\n\n\n  /\\  /\\  __ _  ___ \n");
+	sleep(1);
 	printf(" / /_/ / / _` |/ __|									_\n");
+	sleep(1);
 	printf("/ __  / | (_| |\\__ \\	 __ _   __ _  _ __    __ _   __| |  ___  \n");
+	sleep(1);
 	printf("\\/ /_/   \\__,_||___/	/ _` | / _` || '_ \\  / _` | / _` | / _ \\ \n");
+	sleep(1);
 	printf("                       | (_| || (_| || | | || (_| || (_| || (_) |\n");
+	sleep(1);
 	printf("                      \\__, | \\__,_||_| |_| \\__,_| \\__,_| \\___/ \n");
+	sleep(1);
 	printf("                        |___/ \n");
+	sleep(1);
 	printf("\n\n                      Pulsa Intro\n");
-	getchar();
-	scanf("");
+	while(PulsaIntro);
 }
 
 void Derrota(){
 	printf("\n\n\n  /\\  /\\  __ _  ___ \n");
+	sleep(1);
 	printf(" / /_/ / / _` |/ __|                            _  _      _       \n");
+	sleep(1);
 	printf("/ __  / | (_| |\\__ \\	 _ __    ___  _ __   __| |(_)  __| |  ___ \n");
+	sleep(1);
 	printf("\\/ /_/   \\__,_||___/	| '_ \\  / _ \\| '__| / _` || | / _` | / _ \\ \n");
+	sleep(1);
 	printf("                        | |_) ||  __/| |   | (_| || || (_| || (_) |\n");
+	sleep(1);
 	printf("                        | .__/  \\___||_|    \\__,_||_| \\__,_| \\___/ \n");
+	sleep(1);
 	printf("                        |_|\n");
+	sleep(1);
 	printf("\n\n                      Pulsa Intro\n");
-	getchar();
-	scanf("");
+	while(PulsaIntro());
 }
 
 //Pantalla devolver a jugar, devuelve 0 para salir y 1 para volver a jugar
@@ -337,15 +350,23 @@ int VolverAJugar(){
 }
 
 //INTERFAZ PARA SELECCIONAR LOS MODOS DEL JUEGO
-void menu(){
+void Menu(){
 	LimpiarPantalla();
 
 	char buf[128];
     char option;
 
+    int jugar=1;
+
 	do{
 		//MUESTRA EL MENU
 		printf("OPCION\n");
+		printf("\n        j - JUGAR\n");
+		printf("\n        a - AJUSTES\n");
+		printf("\n        p - PUNTUACIONES\n");
+		printf("\n        q - SALIR\n\n");
+
+		fflush(stdin);
 
 		while (fgets(buf, sizeof buf, stdin)) {
         	printf("\n");
@@ -353,8 +374,16 @@ void menu(){
         	if (option == 'j' || option == 'a' || option == 'q' || option == 'p') {
             	if (buf[1] == '\n') break;
         	}
+        	fflush(stdin);
+
         	LimpiarPantalla();
-        	printf("\n%sIntroduce un solo caracter (s/n) y pulsa intro: %s", ROJO_T, RES_COL);
+
+        	printf("OPCION\n");
+			printf("\n        j - JUGAR\n");
+			printf("\n        a - AJUSTES\n");
+			printf("\n        p - PUNTUACIONES\n");
+			printf("\n        q - SALIR\n\n");
+        	printf("\n%sIntroduce un solo caracter y pulsa intro: %s", ROJO_T, RES_COL);
     	}
 
     	switch(option){
@@ -363,6 +392,7 @@ void menu(){
     			break;
     		}
     		case 'a':{
+    			
     			//MENU DE AJUSTES
     		}
     		case 'q':{
@@ -374,5 +404,18 @@ void menu(){
     			//MENU DE PUNTUACIONES
     		}
     	}	
-	}while(1);
+	}while(jugar);
+}
+
+int PulsaIntro(){
+
+	char buf[3];
+
+	while(getchar()!='\n');
+
+	while (fgets(buf, sizeof buf, stdin)) {
+		if (buf[0] == '\n') return 0;
+    }
+    return 1;
+
 }

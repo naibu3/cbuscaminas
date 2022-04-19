@@ -258,6 +258,7 @@ void MostrarTitulo(){
 	sleep(1);
 	fflush(stdin);
 	printf("\n                                   Pulsa intro\n");
+	sleep(1);
 	while(PulsaIntro());
 
 }
@@ -351,60 +352,7 @@ int VolverAJugar(){
 
 //INTERFAZ PARA SELECCIONAR LOS MODOS DEL JUEGO
 void Menu(){
-	LimpiarPantalla();
-
-	char buf[128];
-    char option;
-
-    int jugar=1;
-
-	do{
-		//MUESTRA EL MENU
-		printf("OPCION\n");
-		printf("\n        j - JUGAR\n");
-		printf("\n        a - AJUSTES\n");
-		printf("\n        p - PUNTUACIONES\n");
-		printf("\n        q - SALIR\n\n");
-
-		fflush(stdin);
-
-		while (fgets(buf, sizeof buf, stdin)) {
-        	printf("\n");
-        	option = buf[0];
-        	if (option == 'j' || option == 'a' || option == 'q' || option == 'p') {
-            	if (buf[1] == '\n') break;
-        	}
-        	fflush(stdin);
-
-        	LimpiarPantalla();
-
-        	printf("OPCION\n");
-			printf("\n        j - JUGAR\n");
-			printf("\n        a - AJUSTES\n");
-			printf("\n        p - PUNTUACIONES\n");
-			printf("\n        q - SALIR\n\n");
-        	printf("\n%sIntroduce un solo caracter y pulsa intro: %s", ROJO_T, RES_COL);
-    	}
-
-    	switch(option){
-
-    		case 'j':{
-    			break;
-    		}
-    		case 'a':{
-    			
-    			//MENU DE AJUSTES
-    		}
-    		case 'q':{
-    			//SALIR
-    			exit(0);
-    		}
-    		case 'p':{
-   		 		LimpiarPantalla();
-    			//MENU DE PUNTUACIONES
-    		}
-    	}	
-	}while(jugar);
+	//No hace nada
 }
 
 int PulsaIntro(){
@@ -415,6 +363,7 @@ int PulsaIntro(){
 
 	while (fgets(buf, sizeof buf, stdin)) {
 		if (buf[0] == '\n') return 0;
+		while(getchar()!='\n');
     }
     return 1;
 

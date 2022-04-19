@@ -12,6 +12,7 @@
 
 int main()
 {
+	//INICIALIZACION
 	LimpiarPantalla();
 
 	int volver_a_jugar=1;
@@ -25,12 +26,17 @@ int main()
 	tablero=ReservarMemTablero(FILAS, COLUMNAS);
 	tablMinas=ReservarMemMinas(FILAS, COLUMNAS);
 
+	//BUCLE DEL JUEGO
 	do{
+		//INICIO
 		MostrarTitulo();
 		LimpiarPantalla();
 
 		//Menu();
 
+
+
+		//JUEGO
 		RellenarTablero(tablero, FILAS, COLUMNAS, CASILLA);
 		ColocarMinas(tablMinas, FILAS, COLUMNAS, N_MINAS);
 		ColocarPistas(tablMinas, FILAS, COLUMNAS);
@@ -56,10 +62,10 @@ int main()
 				Derrota();
 				break;
 			}
-
 		}
 	}while(VolverAJugar());
 
+	//SALIDA DEL PROGRAMA
 	LiberarMemTablero(tablero, FILAS);
 
 	return 0;
